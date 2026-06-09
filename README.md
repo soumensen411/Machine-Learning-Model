@@ -18,7 +18,10 @@ This repo is where I document my journey through various machine learning models
 ├── Notebook/
 │   └── titanic_analysis.ipynb
 └──  hyperparameter tuning techniques/
-    └── GridSearchCV&RandomizedSearchCV.ipynb
+|   └── GridSearchCV&RandomizedSearchCV.ipynb
+└──  Support Vector Machine (SVM)/
+    └── TitanicPredictionModel.ipynb
+
 ```
 
 > A quick note: a few folder names currently include spaces, including one leading space before `hyperparameter tuning techniques`. If you use the command line, wrap those paths in quotes.
@@ -218,7 +221,18 @@ accuracy_score(y_test,y_pred_NB)
 confusion_matrix(y_test,y_pred_NB)
 print(classification_report(y_test,y_pred_NB))
 ```
+--
+### ` Support Vector Machine (SVM)`
 
+The notebook creates the SVM classifier with `gamma='auto'`, trains it on the Iris train split, and checks the test score before moving into parameter tuning:
+
+```python
+from sklearn.svm import SVC
+
+model_svm = SVC(gamma='auto')
+model_svm.fit(X_train,y_train)
+model_svm.score(X_test,y_test)
+```-
 ---
 
 ### ` hyperparameter tuning techniques/`
@@ -279,6 +293,8 @@ classifier_random.fit(X,y)
 results = pd.DataFrame(classifier_random.cv_results_)
 results[['param_C','param_kernel','mean_test_score']]
 ```
+
+---
 
 ## Common workflow across the model notebooks
 
